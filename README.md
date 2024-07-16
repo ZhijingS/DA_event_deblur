@@ -1,1 +1,3 @@
 # DA_event_deblur
+This is the official code of Motion Aware Event Representation-driven Image Deblurring.
+Code coming soon...
