@@ -23,9 +23,11 @@ performance in both quantitative and qualitative assessments.
 
 ## Overview
 
-This repository contains the official implementation of our paper "DemosaicFormer: Coarse-to-Fine Demosaicing Network for HybridEVS Camera", accepted at the CVPR Workshop 2024. 
+This is the overview of our network's architecture:
+![image](https://github.com/ZhijingS/DA_event_deblur/blob/main/network.png)
+The differences of our Deviation Accumulation(DA) event representation and other Polarity Accumulation(PA) representation:
 
-See more details in [[report]](https://arxiv.org/abs/2405.04867), [[paper]](https://openaccess.thecvf.com/content/CVPR2024W/MIPI/papers/Xu_DemosaicFormer_Coarse-to-Fine_Demosaicing_Network_for_HybridEVS_Camera_CVPRW_2024_paper.pdf), [[certificate]](https://mipi-challenge.org/MIPI2024/award_certificates_2024.pdf)
+See more details in our paper.
 
 Our solution competes in MIPI 2024 Demosaic for HybridEVS Camera, achieving the BEST performance in terms of PNSR and SSIM.
 
