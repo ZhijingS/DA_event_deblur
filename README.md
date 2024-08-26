@@ -26,7 +26,8 @@ performance in both quantitative and qualitative assessments.
 This is the overview of our network's architecture:
 ![image](https://github.com/ZhijingS/DA_event_deblur/blob/main/network.png)
 The differences of our Deviation Accumulation(DA) event representation and other Polarity Accumulation(PA) representation:
-
+![image](https://github.com/ZhijingS/DA_event_deblur/blob/main/DArep.png)
+![image](https://github.com/ZhijingS/DA_event_deblur/blob/main/algo.png)
 See more details in our paper.
 
 Our solution competes in MIPI 2024 Demosaic for HybridEVS Camera, achieving the BEST performance in terms of PNSR and SSIM.
