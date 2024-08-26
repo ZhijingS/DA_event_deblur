@@ -32,14 +32,15 @@ See more details in our paper.
 
 ## Installation
 
--TODO
+- TODO
 
 ## Dataset & Data Preprocess
 
--TODO
+- TODO
 
 ## Evaluation
 The quantitative results of our method on GoPro, HS-ERGB and REBlur test datasets.
+![image](https://github.com/ZhijingS/DA_event_deblur/blob/main/expres.png)
 #### Pretrained Model Download 
 
 - TODO
@@ -57,18 +58,17 @@ The quantitative results of our method on GoPro, HS-ERGB and REBlur test dataset
 If you find our work useful in your research, please consider citing:
 
 ```
-@InProceedings{Xu_2024_CVPR,
-    author    = {Xu, Senyan and Sun, Zhijing and Zhu, Jiaying and Zhu, Yurui and Fu, Xueyang and Zha, Zheng-Jun},
-    title     = {DemosaicFormer: Coarse-to-Fine Demosaicing Network for HybridEVS Camera},
-    booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
-    month     = {June},
+@InProceedings{Sun_2024_ECCV,
+    author    = {Sun, Zhijing and Fu, Xueyang and Huang, Longzhuo and Liu, Aiping and Zha, Zheng-Jun},
+    title     = {Motion Aware Event Representation-driven Image Deblurring},
+    booktitle = {Proceedings of the European conference on computer vision (ECCV)},
     year      = {2024},
-    pages     = {1126-1135}
+    organization = {Springer}
 }
 ```
 
 ## Contact
 
-Should you have any question, please contact [syxu@mail.ustc.edu.cn](syxu@mail.ustc.edu.cn)
+Should you have any question, please contact [sunzhijing@mail.ustc.edu.cn](sunzhijing@mail.ustc.edu.cn)
 
 **Acknowledgment:** This code is based on the [BasicSR](https://github.com/xinntao/BasicSR) toolbox.
