@@ -2,7 +2,7 @@
 This is the official code of Motion Aware Event Representation-driven Image Deblurring.
 Code coming soon...
 
-## Motion Aware Event Representation-driven Image Deblurring
+## Motion Aware Event Representation-driven Image Deblurring(MAENet)
 > Traditional image deblurring struggles with high-quality reconstruction due to limited motion data from single blurred images. Excitingly, the high-temporal resolution of event cameras records motion
 more precisely in a different modality, transforming image deblurring.
 However, many event camera-based methods, which only care about the
