@@ -32,11 +32,11 @@ See more details in our paper.
 
 ## Installation
 
-- TODO
+- pip install -r requirements.txt
 
 ## Dataset & Data Preprocess
 
-- Please download the raw GoPro event dataset released by EFNet and follow the README in /scripts/data_preparation to create the DA event representation.
+- Please download the raw GoPro event dataset released by EFNet and follow the [README](https://github.com/ZhijingS/DA_event_deblur/blob/main/scripts/data_preparation/README.md) to create the DA event representation.
 
 ## Evaluation
 The quantitative results of our method on GoPro, HS-ERGB and REBlur test datasets.
@@ -46,12 +46,20 @@ The quantitative results of our method on GoPro, HS-ERGB and REBlur test dataset
 - TODO
 
 #### Test
-
-- TODO
+GoPro:
+- python basicsr/test.py -opt options/test/GoPro/test_MAENet_GoPro.yml
+HS-ERGB:
+- python basicsr/test.py -opt options/test/HS_ERGB/test_MAENet_ERGB.yml
+REBlur:
+- python basicsr/test.py -opt options/test/GoPro/test_MAENet_REBlur.yml
 
 ## Training
-
-- TODO
+GoPro:
+- python basicsr/train.py -opt options/train/GoPro/MAENet_GoPro.yml
+HS-ERGB:
+- python basicsr/train.py -opt options/train/HS_ERGB/MAENet_ERGB.yml
+REBlur:
+- python basicsr/train.py -opt options/train/GoPro/MAENet_REBlur.yml
 
 ## Citation
 
@@ -72,3 +80,4 @@ If you find our work useful in your research, please consider citing:
 Should you have any question, please contact [sunzhijing@mail.ustc.edu.cn](sunzhijing@mail.ustc.edu.cn)
 
 **Acknowledgment:** This code is based on the [BasicSR](https://github.com/xinntao/BasicSR) toolbox.
+
