@@ -31,9 +31,9 @@ The differences of our Deviation Accumulation(DA) event representation and other
 See more details in our paper.
 
 ## Installation
-
+```
 - pip install -r requirements.txt
-
+```
 ## Dataset & Data Preprocess
 
 - Please download the raw GoPro event dataset released by EFNet and follow the [README](https://github.com/ZhijingS/DA_event_deblur/blob/main/scripts/data_preparation/README.md) to create the DA event representation.
@@ -47,20 +47,30 @@ The quantitative results of our method on GoPro, HS-ERGB and REBlur test dataset
 
 #### Test
 GoPro:
+```
 - python basicsr/test.py -opt options/test/GoPro/test_MAENet_GoPro.yml
+```
 HS-ERGB:
+```
 - python basicsr/test.py -opt options/test/HS_ERGB/test_MAENet_ERGB.yml
+```
 REBlur:
+```
 - python basicsr/test.py -opt options/test/GoPro/test_MAENet_REBlur.yml
-
+```
 ## Training
 GoPro:
+```
 - python basicsr/train.py -opt options/train/GoPro/MAENet_GoPro.yml
+```
 HS-ERGB:
+```
 - python basicsr/train.py -opt options/train/HS_ERGB/MAENet_ERGB.yml
+```
 REBlur:
+```
 - python basicsr/train.py -opt options/train/GoPro/MAENet_REBlur.yml
-
+```
 ## Citation
 
 If you find our work useful in your research, please consider citing:
