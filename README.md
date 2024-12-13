@@ -1,6 +1,6 @@
 # Motion Aware Event Representation-driven Image Deblurring-ECCV 2024🫶
 This is the official code of Motion Aware Event Representation-driven Image Deblurring.
-Code coming soon...
+Training Code released!
 
 ## Motion Aware Event Representation-driven Image Deblurring(MAENet)
 > Traditional image deblurring struggles with high-quality reconstruction due to limited motion data from single blurred images. Excitingly, the high-temporal resolution of event cameras records motion
@@ -36,7 +36,7 @@ See more details in our paper.
 
 ## Dataset & Data Preprocess
 
-- TODO
+- Please download the raw GoPro event dataset released by EFNet and follow the README in /scripts/data_preparation to create the DA event representation.
 
 ## Evaluation
 The quantitative results of our method on GoPro, HS-ERGB and REBlur test datasets.
