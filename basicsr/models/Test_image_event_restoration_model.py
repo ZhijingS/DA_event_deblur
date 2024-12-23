@@ -350,12 +350,12 @@ class TestImageEventRestorationModel(BaseModel):
             outs = []
             m = self.opt['val'].get('max_minibatch', n)  # m is the minibatch, equals to batch size or mini batch size
             i = 0
-            events, econvs, evs, encs, decs, outs= self.net_g(x = self.lq, event = self.voxel, mask = self.mask)
+            # events, econvs, evs, encs, decs, outs= self.net_g(x = self.lq, event = self.voxel, mask = self.mask)
 
             # if isinstance(pred, list):
             #     pred = pred[-1]
 
-            self.output = [events]+[econvs]+evs + encs + decs + [outs]
+            # self.output = [events]+[econvs]+evs + encs + decs + [outs]
             # while i < n:
             #     j = i + m
             #     if j >= n:
@@ -372,7 +372,7 @@ class TestImageEventRestorationModel(BaseModel):
             #     outs.append(pred)
             #     i = j
 
-            # self.output = torch.cat(outs, dim=0)  # all mini batch cat in dim0
+            self.output = self.net_g(x = self.lq, event = self.voxel)
         self.net_g.train()
 
     def single_image_inference(self, img, voxel, save_path):
