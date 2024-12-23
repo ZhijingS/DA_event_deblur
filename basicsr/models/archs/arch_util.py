@@ -520,7 +520,7 @@ class Mutual_AttentionwithFC(nn.Module):
         out = rearrange(out, 'b head c (h w) -> b (head c) h w', head=self.num_heads, h=h, w=w)
         out = self.project_out(out)
 
-        return out,y_
+        return out
 
 
 ##########################################################################
@@ -821,12 +821,12 @@ class EventImage_BiAttentionTransformerBlockwithFC(nn.Module):
         assert image.shape == event.shape, 'the shape of image doesnt equal to event'
         b, c, h, w = image.shape
 
-        out_i,im_ = self.attn(self.norm1_image(image), self.norm1_event(event))
-        fused_image = image + out_i
-        out_e,e_ = self.attn(self.norm1_image(event), self.norm1_event(image))
-        fused_event = event + out_e
-        # fused_image = image + self.attn(self.norm1_image(image), self.norm1_event(event)) # b, c, h, w b 768 h/16 w/16
-        # fused_event = event + self.attn(self.norm1_image(event), self.norm1_event(image))
+        # out_i,im_ = self.attn(self.norm1_image(image), self.norm1_event(event))
+        # fused_image = image + out_i
+        # out_e,e_ = self.attn(self.norm1_image(event), self.norm1_event(image))
+        # fused_event = event + out_e
+        fused_image = image + self.attn(self.norm1_image(image), self.norm1_event(event)) # b, c, h, w b 768 h/16 w/16
+        fused_event = event + self.attn(self.norm1_image(event), self.norm1_event(image))
         # mlp
         fused = torch.cat([fused_image,fused_event],dim=1)
         fused = to_3d(fused) # b, h*w, 2c
@@ -834,7 +834,7 @@ class EventImage_BiAttentionTransformerBlockwithFC(nn.Module):
         fused = to_4d(fused, h, w) # b,2c,h,w
         fused = self.conv(fused)
 
-        return fused, out_e, out_i
+        return fused
     
 class EventImage_BiAttentionTransformerBlockwithFC_I2E(nn.Module):
     def __init__(self, dim, num_heads, ffn_expansion_factor=2, bias=False, LayerNorm_type='WithBias'):
