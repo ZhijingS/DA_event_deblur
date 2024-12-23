@@ -420,14 +420,14 @@ class TestImageEventRestorationModel(BaseModel):
 
             self.feed_data(val_data)
 
-            # if self.seq_name == last_seq_name:
-            #     seq_inner_cnt += 1
-            #     img_name = '{:04d}'.format(seq_inner_cnt)
+            if self.seq_name == last_seq_name:
+                seq_inner_cnt += 1
+                img_name = '{:04d}'.format(seq_inner_cnt)
                 
-            # else:
-            #     seq_inner_cnt = 0
-            #     img_name = '{:04d}'.format(seq_inner_cnt)
-            #     last_seq_name = self.seq_name
+            else:
+                seq_inner_cnt = 0
+                img_name = '{:04d}'.format(seq_inner_cnt)
+                last_seq_name = self.seq_name
 
             if self.opt['val'].get('grids') is not None:
                 self.grids()
@@ -438,60 +438,60 @@ class TestImageEventRestorationModel(BaseModel):
             if self.opt['val'].get('grids') is not None:
                 self.grids_inverse()
 
-            self.plot_magnitude()
-            import pdb;pdb.set_trace()
+            # self.plot_magnitude()
+            # import pdb;pdb.set_trace()
 
-            # visuals = self.get_current_visuals()
-            # sr_img = tensor2img([visuals['result']], rgb2bgr=rgb2bgr)
-            # if 'gt' in visuals:
-            #     gt_img = tensor2img([visuals['gt']], rgb2bgr=rgb2bgr)
-            #     del self.gt
+            visuals = self.get_current_visuals()
+            sr_img = tensor2img([visuals['result']], rgb2bgr=rgb2bgr)
+            if 'gt' in visuals:
+                gt_img = tensor2img([visuals['gt']], rgb2bgr=rgb2bgr)
+                del self.gt
 
             # # tentative for out of GPU memory
-            # del self.lq
-            # del self.output
-            # torch.cuda.empty_cache()
+            del self.lq
+            del self.output
+            torch.cuda.empty_cache()
 
-            # if save_img:
+            if save_img:
                 
-            #     if self.opt['is_train']:  # TRAIN
-            #         if cnt == 1: # visualize cnt=1 image every time
-            #             save_img_path = osp.join(self.opt['path']['visualization'], self.seq_name,
-            #                                     img_name,
-            #                                     f'{img_name}_{current_iter}.png')
+                if self.opt['is_train']:  # TRAIN
+                    if cnt == 1: # visualize cnt=1 image every time
+                        save_img_path = osp.join(self.opt['path']['visualization'], self.seq_name,
+                                                img_name,
+                                                f'{img_name}_{current_iter}.png')
                         
-            #             save_gt_img_path = osp.join(self.opt['path']['visualization'], self.seq_name,
-            #                                     img_name,
-            #                                     f'{img_name}_{current_iter}_gt.png')
+                        save_gt_img_path = osp.join(self.opt['path']['visualization'], self.seq_name,
+                                                img_name,
+                                                f'{img_name}_{current_iter}_gt.png')
                             
-            #     else:  # TEST
-            #         print('Save path:{}'.format(self.opt['path']['visualization']))
-            #         print('Dataset name:{}'.format(dataset_name))
-            #         print('Img_name:{}'.format(img_name))
-            #         save_img_path = osp.join(
-            #             self.opt['path']['visualization'], dataset_name, self.seq_name,
-            #             f'{img_name}.png')
-            #         save_gt_img_path = osp.join(
-            #             self.opt['path']['visualization'], dataset_name, self.seq_name,
-            #             f'{img_name}_gt.png')
+                else:  # TEST
+                    print('Save path:{}'.format(self.opt['path']['visualization']))
+                    print('Dataset name:{}'.format(dataset_name))
+                    print('Img_name:{}'.format(img_name))
+                    save_img_path = osp.join(
+                        self.opt['path']['visualization'], dataset_name, self.seq_name,
+                        f'{img_name}.png')
+                    save_gt_img_path = osp.join(
+                        self.opt['path']['visualization'], dataset_name, self.seq_name,
+                        f'{img_name}_gt.png')
                     
-            #     imwrite(sr_img, save_img_path)
-            #     if 'gt' in visuals:
-            #         imwrite(gt_img, save_gt_img_path)
+                imwrite(sr_img, save_img_path)
+                if 'gt' in visuals:
+                    imwrite(gt_img, save_gt_img_path)
 
-            # if with_metrics:
-            #     # calculate metrics
-            #     opt_metric = deepcopy(self.opt['val']['metrics'])
-            #     if use_image:
-            #         for name, opt_ in opt_metric.items():
-            #             metric_type = opt_.pop('type')
-            #             self.metric_results[name] += getattr(
-            #                 metric_module, metric_type)(sr_img, gt_img, **opt_)
-            #     else:
-            #         for name, opt_ in opt_metric.items():
-            #             metric_type = opt_.pop('type')
-            #             self.metric_results[name] += getattr(
-            #                 metric_module, metric_type)(visuals['result'], visuals['gt'], **opt_)
+            if with_metrics:
+                # calculate metrics
+                opt_metric = deepcopy(self.opt['val']['metrics'])
+                if use_image:
+                    for name, opt_ in opt_metric.items():
+                        metric_type = opt_.pop('type')
+                        self.metric_results[name] += getattr(
+                            metric_module, metric_type)(sr_img, gt_img, **opt_)
+                else:
+                    for name, opt_ in opt_metric.items():
+                        metric_type = opt_.pop('type')
+                        self.metric_results[name] += getattr(
+                            metric_module, metric_type)(visuals['result'], visuals['gt'], **opt_)
 
             pbar.update(1)
             # pbar.set_description(f'Test {img_name}')
