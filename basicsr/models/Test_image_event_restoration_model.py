@@ -99,29 +99,39 @@ class TestImageEventRestorationModel(BaseModel):
 
     def feed_data(self, data):
 
-        self.lq = data['LQ'].to(self.device)
-        self.voxel=data['Event'].to(self.device)
-        # self.seq_name = data ['seq'] # add seq name
-        if self.opt['dataset_name'] == 'REBlur':
-            # 260->256 if REBlur
-            self.lq = self.lq[:,:,:256,:]
-            self.voxel = self.voxel[:,:,:256,:]
-
-        # list -> str
-        self.seq_name = data['LQ_path'][0].split("/")[-1]
-        # self.seq_name = self.seq_name[0]
-
-        if 'mask' in data:
-            self.mask = data['mask'].to(self.device)
+        if self.opt['dataset_name'] == 'my_dataset':
+            self.lq = data['lq'].to(self.device)
+            self.gt = data['gt'].to(self.device)
+            self.voxel = data['event'].to(self.device)
+            self.seq_name = data['seqname']
+        else:
+            # self.lq = data['LQ'].to(self.device)
+            self.lq = data['frame'].to(self.device)
+            # self.voxel=data['Event'].to(self.device)
+            self.voxel=data['voxel'].to(self.device)
+            self.seq_name = data['seq'] # add seq name
             if self.opt['dataset_name'] == 'REBlur':
-            # 260->256 if REBlur
-                self.mask = self.mask[:,:,:256,:]
+                # 260->256 if REBlur
+                self.lq = self.lq[:,:,:256,:]
+                self.voxel = self.voxel[:,:,:256,:]
 
-        if 'GT' in data:
-            self.gt = data['GT'].to(self.device)
-            if self.opt['dataset_name'] == 'REBlur':
-            # 260->256 if REBlur
-                self.gt = self.gt[:,:,:256,:]
+            # list -> str
+            # self.seq_name = data['LQ_path'][0].split("/")[-1]
+            self.seq_name = self.seq_name[0]
+
+            if 'mask' in data:
+                self.mask = data['mask'].to(self.device)
+                if self.opt['dataset_name'] == 'REBlur':
+                # 260->256 if REBlur
+                    self.mask = self.mask[:,:,:256,:]
+
+            # if 'GT' in data:
+            if 'frame_gt' in data:
+                # self.gt = data['GT'].to(self.device)
+                self.gt = data['frame_gt'].to(self.device)
+                if self.opt['dataset_name'] == 'REBlur':
+                # 260->256 if REBlur
+                    self.gt = self.gt[:,:,:256,:]
 
 
     def transpose(self, t, trans_idx):
