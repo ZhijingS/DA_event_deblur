@@ -43,7 +43,9 @@ The quantitative results of our method on GoPro, HS-ERGB and REBlur test dataset
 ![image](https://github.com/ZhijingS/DA_event_deblur/blob/main/expres.png)
 #### Pretrained Model Download 
 
-- TODO
+The pretrained model on GoPro dataset:[Download](https://pan.baidu.com/s/1HiS0Bo03gu06FAvnLEgd8w?pwd=xeuh) (code:xeuh)
+The pretrained model on HS-ERGB dataset:[Download](https://pan.baidu.com/s/1LC6JhjK1dGkjpHgO-_1VOQ?pwd=yktx) (code:yktx)
+The pretrained model on REBlur dataset:[Download](https://pan.baidu.com/s/1etPnbp2DhgQW9lmWZKKkMQ?pwd=uy1s) (code:uy1s)
 
 #### Test
 GoPro:
