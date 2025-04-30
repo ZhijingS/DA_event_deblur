@@ -67,23 +67,17 @@ class ImageEventRestorationModel(BaseModel):
         train_opt = self.opt['train']
         optim_params = []
         optim_params_lowlr = []
-        # 设定CLIP模型参数不被更新
         for k, v in self.net_g.named_parameters():
             if v.requires_grad:
-                if k.startswith('up_path_2') or k.startswith('skip_conv_2') or k.startswith('last'):
-                    optim_params.append(v)
-                    logger = get_root_logger()
-                    logger.warning(f'Params {k} will be optimized!!!')
-                    # optim_params_lowlr.append(v)
+                if k.startswith('module.offsets') or k.startswith('module.dcns'):
+                    optim_params_lowlr.append(v)
                 else:
-                    logger = get_root_logger()
-                    logger.warning(f'Params {k} will not be optimized.')
-                    # optim_params.append(v)
+                    optim_params.append(v)
             else:
                 logger = get_root_logger()
                 logger.warning(f'Params {k} will not be optimized.')
         # print(optim_params)
-        ratio = 100
+        ratio = 0.1
 
         optim_type = train_opt['optim_g'].pop('type')
         if optim_type == 'Adam':
