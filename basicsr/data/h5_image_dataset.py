@@ -1,6 +1,8 @@
 # ------------------------------------------------------------------------
 # Modified from (https://github.com/TimoStoff/events_contrast_maximization)
 # ------------------------------------------------------------------------
+# If one h5 file has all frames in one scene, use this dataset
+# ------------------------------------------------------------------------
 import copy
 from torch.utils import data as data
 import pandas as pd
