@@ -1,6 +1,8 @@
 # ------------------------------------------------------------------------
 # Modified from (https://github.com/TimoStoff/events_contrast_maximization)
 # ------------------------------------------------------------------------
+# If one h5 file has one frame, use this dataset
+# ------------------------------------------------------------------------
 from torch.utils import data as data
 import pandas as pd
 from torchvision.transforms.functional import normalize
