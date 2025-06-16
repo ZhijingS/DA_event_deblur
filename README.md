@@ -37,6 +37,7 @@ See more details in our paper.
 ## Dataset & Data Preprocess
 
 - Please download the raw GoPro event dataset released by EFNet and follow the [README](https://github.com/ZhijingS/DA_event_deblur/blob/main/scripts/data_preparation/README.md) to create the DA event representation.
+- Please use this [DA_GoPro_test](https://pan.baidu.com/s/1Qxr51ZcSemAEpSFh3FGLuQ?pwd=4cxd) (code:4cxd) dataset to verify the performance.
 
 ## Evaluation
 The quantitative results of our method on GoPro, HS-ERGB and REBlur test datasets.
